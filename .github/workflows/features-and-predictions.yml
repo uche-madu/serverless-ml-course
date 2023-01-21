@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
-	  python -m venv venv
+	        python -m venv venv
           . venv/bin/activate
 
           python -m pip install --upgrade pip
