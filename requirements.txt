@@ -1,9 +1,9 @@
 faker
 parsedatetime
 hopsworks
+jupyter
 nbconvert
 scikit-learn
-plotly
 Pillow
 seaborn
 dataframe-image
