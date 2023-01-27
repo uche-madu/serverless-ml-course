@@ -2,6 +2,9 @@ name: iris-feature-and-prediction-pipelines
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 #  schedule:
 #    - cron: '11 11 * * *'
 
@@ -19,19 +22,20 @@ jobs:
         id: setup-python
         with:
           python-version: '3.9'
+          cache: 'pip'
       
-      - name: create or restore pip dependency cache
-        uses: actions/cache@v3
-        id: cache-dependencies
-        with:
-          path: ~/.venv
-          key: ${{ runner.os }}-venv-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/*requirements.txt') }}
+      #- name: create or restore pip dependency cache
+      #  uses: actions/cache@v3
+      #  id: cache-dependencies
+      #  with:
+      #    path: ~/.venv
+      #    key: ${{ runner.os }}-venv-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/*requirements.txt') }}
 
       - name: Install dependencies
-        if: ${{ steps.cache-dependencies.outputs.cache-hit != 'true' }}
+      #  if: ${{ steps.cache-dependencies.outputs.cache-hit != 'true' }}
         run: |
-          python -m venv venv
-          . venv/bin/activate
+          #python -m venv venv
+          #. venv/bin/activate
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           
